@@ -1,0 +1,143 @@
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int input, grade, sum = 0, mean, median = 0;
+    string name;
+    vector<int> grades;
+    vector<string> names;
+
+    cout << "How many name grade pairs do you want?" << endl;
+    cin >> input;
+
+    for (int i = 0; i < input; ++i) {
+        cout << "Enter the name of the student" << endl;
+        cin >> name;
+        names.push_back(name);
+
+        cout << "Enter the grade of the student" << endl;
+        cin >> grade;
+        grades.push_back(grade);
+    }
+
+    for (int i = 0; i < grades.size(); ++i) {
+        sum += grades[i];
+    }
+
+    mean = sum / grades.size();
+    cout << "The mean grade is: " << mean << endl;
+    sort(grades.begin(), grades.end());
+    size_t middleIndex = grades.size() / 2;
+
+    if (grades.size() % 2 == 0) {
+        median = (grades[middleIndex - 1] + grades[middleIndex]) / 2;
+    } else {
+        median = grades[middleIndex];
+    }
+cout << "Median of the grades: " << median << endl;
+int maxFrequency = 0;
+    vector<int> modeGrades;
+
+    for (int i = 0; i < grades.size(); ++i) {
+        int frequency = 0;
+        for (int j = 0; j < grades.size(); ++j) {
+            if (grades[j] == grades[i])
+                frequency++;
+        }
+        if (frequency > maxFrequency) {
+            maxFrequency = frequency;
+            modeGrades.clear();
+            modeGrades.push_back(grades[i]);
+        } else if (frequency == maxFrequency && find(modeGrades.begin(), modeGrades.end(), grades[i]) == modeGrades.end()) {
+            modeGrades.push_back(grades[i]);
+        }
+    }
+
+    cout << "Mode(s) of the grades: ";
+    for (int grade : modeGrades) cout << grade << " ";
+    cout << endl;
+    cout << "Names of students with mode grade: ";
+    for (int i = 0; i < grades.size(); ++i) {
+        if (find(modeGrades.begin(), modeGrades.end(), grades[i]) != modeGrades.end()) {
+            cout << names[i] << " ";
+        }
+    }
+    cout << endl;
+
+    return 0;
+}#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int input, grade, sum = 0, mean, median = 0;
+    string name;
+    vector<int> grades;
+    vector<string> names;
+
+    cout << "How many name grade pairs do you want?" << endl;
+    cin >> input;
+
+    for (int i = 0; i < input; ++i) {
+        cout << "Enter the name of the student" << endl;
+        cin >> name;
+        names.push_back(name);
+
+        cout << "Enter the grade of the student" << endl;
+        cin >> grade;
+        grades.push_back(grade);
+    }
+
+    for (int i = 0; i < grades.size(); ++i) {
+        sum += grades[i];
+    }
+
+    mean = sum / grades.size();
+    cout << "The mean grade is: " << mean << endl;
+    sort(grades.begin(), grades.end());
+    size_t middleIndex = grades.size() / 2;
+
+    if (grades.size() % 2 == 0) {
+        median = (grades[middleIndex - 1] + grades[middleIndex]) / 2;
+    } else {
+        median = grades[middleIndex];
+    }
+cout << "Median of the grades: " << median << endl;
+int maxFrequency = 0;
+    vector<int> modeGrades;
+
+    for (int i = 0; i < grades.size(); ++i) {
+        int frequency = 0;
+        for (int j = 0; j < grades.size(); ++j) {
+            if (grades[j] == grades[i])
+                frequency++;
+        }
+        if (frequency > maxFrequency) {
+            maxFrequency = frequency;
+            modeGrades.clear();
+            modeGrades.push_back(grades[i]);
+        } else if (frequency == maxFrequency && find(modeGrades.begin(), modeGrades.end(), grades[i]) == modeGrades.end()) {
+            modeGrades.push_back(grades[i]);
+        }
+    }
+
+    cout << "Mode(s) of the grades: ";
+    for (int grade : modeGrades) cout << grade << " ";
+    cout << endl;
+    cout << "Names of students with mode grade: ";
+    for (int i = 0; i < grades.size(); ++i) {
+        if (find(modeGrades.begin(), modeGrades.end(), grades[i]) != modeGrades.end()) {
+            cout << names[i] << " ";
+        }
+    }
+    cout << endl;
+
+    return 0;
+}
